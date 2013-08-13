@@ -87,8 +87,36 @@
     (else (cons (car set1)
                 (union (cdr set1) set2)))))
 ;;计算集合的交集
+(define (intersect set1 set2)
+  (cond
+    ((null? set1) '())
+    ((member? (car set1) set2)
+     (cons (car set1)
+           (intersect (cdr set1) set2)))
+    (else (intersect (cdr set1) set2))))
 
-;;计算集合的
+;;计算集合的补集
+(define (complement universal set1)
+  (cond
+    ((null? universal) '())
+    ((member? (car universal) set1) (complement (cdr universal) set1))
+    (else 
+     (cons (car universal) (complement (cdr universal) set1)))))
+                       
+
+(define (find-row-temp index)
+  (
+
+(define (find-row index)
+  (
+
+;;当前局面位置可能放的值
+(define (maybe-numbers index)
+  (intersect (complement VALUES (find-box index))
+             (intersect (complement VALUES (find-row index))
+             (complement VALUES (find-row index)))))
+  
+  
 
 
 ;;数独求解器 list -> list or false
